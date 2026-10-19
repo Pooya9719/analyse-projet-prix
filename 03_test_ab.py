@@ -12,7 +12,7 @@ import pandas as pd
 from scipy import stats
 
 import config as C
-from outils import charger_propre, chi2, nb, p_txt, puissance, titre, welch
+from outils import charger_propre, chi2, effet_detectable, nb, p_txt, puissance, titre, welch
 
 d = charger_propre()
 
@@ -39,7 +39,10 @@ for col, (libelle, nature) in C.VARIABLES_DEPENDANTES.items():
         print(r["tableau"].rename(index=C.VERSIONS).to_string())
 
 n = d[C.CONDITION].value_counts()
-pw = puissance(n.iloc[0], n.iloc[1])
-titre("La puissance")
-print(f"Avec {n.iloc[0]} et {n.iloc[1]} répondants, la probabilité de détecter un effet moyen (d = 0,5) est de {nb(pw * 100, 0)} %.")
-print("Sous 80 %, un résultat non significatif ne prouve pas l'absence d'effet : écrivez-le.")
+titre("La puissance : ce que le test pouvait voir")
+pw_petit, pw_moyen = puissance(n.iloc[0], n.iloc[1], 0.2), puissance(n.iloc[0], n.iloc[1], 0.5)
+d_min = effet_detectable(n.iloc[0], n.iloc[1])
+print(f"Avec {n.iloc[0]} et {n.iloc[1]} répondants, le test détecte un effet moyen (d = 0,5) {nb(pw_moyen * 100, 0)} fois sur 100,")
+print(f"un petit effet (d = 0,2) {nb(pw_petit * 100, 0)} fois sur 100.")
+print(f"Il ne détecte 80 fois sur 100 que les effets d'au moins d = {nb(d_min)}.")
+print("Un résultat non significatif avec un effet plus petit que cela ne prouve pas l'absence d'effet : écrivez-le.")
