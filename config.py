@@ -71,6 +71,10 @@ Valeur ~ condition_A + Attitude
 Intention ~ Valeur + Attitude
 """
 
+# la médiation à tester : (X, médiateur, Y, [variables de contrôle]) ; None pour ne pas la tester.
+# Elle est estimée comme dans PROCESS (modèle 4) : sur les scores moyens, avec un intervalle de confiance par bootstrap.
+MEDIATION = ("condition_A", "Valeur", "Intention", ["Attitude"])
+
 # ---- les seuils de lecture (ne pas toucher sans raison) --------------------------------
 SEUIL = 0.05
 SEUILS_MESURE = {

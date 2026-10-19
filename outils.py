@@ -246,3 +246,35 @@ def htmt(d):
             hetero = r.loc[C.ECHELLES[a], C.ECHELLES[b]].values.mean()
             out.loc[b, a] = hetero / math.sqrt(mono(C.ECHELLES[a]) * mono(C.ECHELLES[b]))
     return out
+
+
+def scores_moyens(d):
+    """Le score de chaque construit : la moyenne de ses items (après recodage des items inversés)."""
+    d = d.copy()
+    for nom, items in C.ECHELLES.items():
+        d[nom] = d[items].mean(axis=1)
+    return d
+
+
+def mediation_bootstrap(d, x, m, y, controles=(), n=5000, graine=2026):
+    """Médiation simple (PROCESS, modèle 4) : a = effet de x sur m, b = effet de m sur y à x constant,
+    effet indirect a × b, et son intervalle de confiance à 95 % par bootstrap percentile."""
+    cols = [x, m, y, *controles]
+    v = d[cols].dropna().to_numpy(float)
+    X, M, Y, W = v[:, 0], v[:, 1], v[:, 2], v[:, 3:]
+
+    def coefs(X, M, Y, W):
+        un = np.ones((len(X), 1))
+        a = np.linalg.lstsq(np.column_stack([un, X, W]), M, rcond=None)[0][1]
+        cb = np.linalg.lstsq(np.column_stack([un, X, M, W]), Y, rcond=None)[0]
+        return a, cb[2], cb[1]
+
+    a, b, c_direct = coefs(X, M, Y, W)
+    rng = np.random.default_rng(graine)
+    ab = []
+    for _ in range(n):
+        i = rng.integers(0, len(X), len(X))
+        aa, bb, _ = coefs(X[i], M[i], Y[i], W[i])
+        ab.append(aa * bb)
+    bas, haut = np.percentile(ab, [2.5, 97.5])
+    return {"a": a, "b": b, "ab": a * b, "direct": c_direct, "bas": bas, "haut": haut, "n": len(X), "tirages": n}
