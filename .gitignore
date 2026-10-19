@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# les résultats se régénèrent
+sorties/
+
+# vos exports de questionnaire sont des données personnelles : jamais dans git
+donnees/*
+!donnees/exemple.csv
+!donnees/fabriquer_exemple.py
