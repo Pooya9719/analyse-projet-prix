@@ -134,11 +134,6 @@ def puissance(n_a, n_b, effet=0.5):
     return TTestIndPower().power(effet, n_a, C.SEUIL, ratio=n_b / n_a)
 
 
-def effet_detectable(n_a, n_b, puissance_visee=0.8):
-    """Le plus petit effet (d de Cohen) que ces effectifs détectent avec la puissance visée : l'analyse de sensibilité."""
-    from statsmodels.stats.power import TTestIndPower
-    return TTestIndPower().solve_power(None, nobs1=n_a, alpha=C.SEUIL, power=puissance_visee, ratio=n_b / n_a)
-
 
 # ---- Van Westendorp et Gabor-Granger ---------------------------------------------------------
 def courbes_vw(d, grille=None):
