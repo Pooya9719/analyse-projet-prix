@@ -28,5 +28,5 @@ print(propre[C.CONDITION].value_counts().rename(index=C.VERSIONS).to_string())
 
 propre.to_csv(os.path.join(SORTIES, "donnees_propres.csv"), index=False, encoding="utf-8")
 pd.DataFrame(journal, columns=["etape", "retires", "reste"]).to_csv(os.path.join(SORTIES, "journal_nettoyage.csv"), index=False, encoding="utf-8")
-print("\nÀ écrire dans votre dossier : le nombre de réponses reçues, chaque retrait et sa raison, le nombre final par version.")
+print("\nÀ écrire dans votre rapport : le nombre de réponses reçues, chaque retrait et sa raison, le nombre final par version.")
 print("Fichiers : sorties/donnees_propres.csv, sorties/journal_nettoyage.csv")

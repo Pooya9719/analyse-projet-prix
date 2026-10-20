@@ -6,7 +6,7 @@ Ce ne sont pas des données à analyser à la place des vôtres.
 
 Le scénario : un coffret de chocolats vendu 45 €, présenté de deux façons tirées au sort.
   A : « fabriqué à la main par un artisan chocolatier »   B : la même description, sans la mention artisanale.
-On y a glissé le désordre habituel : doublons, membres du M1, contrôle d'attention raté,
+On y a glissé le désordre habituel : doublons, répondants qui connaissent déjà l'étude, contrôle d'attention raté,
 seuils de Van Westendorp dans le désordre, réponses de Gabor-Granger incohérentes.
 
 Lancer :  python donnees/fabriquer_exemple.py
@@ -42,7 +42,7 @@ d = pd.DataFrame({
     "session_id": [f"s{i:03d}" for i in range(1, N + 1)],
     "ts": pd.date_range("2026-10-12 09:00", periods=N, freq="57min").strftime("%Y-%m-%dT%H:%M:%S+02:00"),
     "condition": condition,
-    "filtre_m1": np.where(rng.random(N) < 0.04, "oui", "non"),
+    "filtre": np.where(rng.random(N) < 0.04, "oui", "non"),
     "attention": np.where(rng.random(N) < 0.05, "rate", "ok"),
 })
 

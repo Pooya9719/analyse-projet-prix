@@ -1,20 +1,19 @@
-# Analyser votre projet de Prix
+# Analyser une étude de prix
 
-Squelette d'analyse pour le M1 Marketing de l'IAE Clermont Auvergne, cours
-d'Analyse de données, CM 3 : on applique le cours d'analyse à l'étude de prix
-que vous avez menée dans le cours de Prix (test A/B, Van Westendorp,
-Gabor-Granger, échelles).
+Squelette d'analyse d'une étude de prix par questionnaire : un test A/B entre
+deux versions d'une offre, le prix psychologique (Van Westendorp,
+Gabor-Granger) et, si elles ont été posées, des échelles de mesure.
 
 Ce n'est pas une boîte noire à faire tourner : c'est un point de départ que vous
 lisez, adaptez à votre questionnaire, et dont vous devez pouvoir expliquer
-chaque ligne de résultat dans votre dossier.
+chaque ligne de résultat dans votre rapport.
 
 ## Ce que contient le dépôt
 
 | Fichier | Ce qu'il fait |
 |---|---|
 | `config.py` | **le seul fichier à adapter** : vos noms de colonnes, vos versions, vos prix, vos échelles |
-| `01_nettoyer.py` | retire doublons, membres du M1, contrôles d'attention ratés, réponses de prix incohérentes ; garde un journal |
+| `01_nettoyer.py` | retire doublons, répondants filtrés, contrôles d'attention ratés, réponses de prix incohérentes ; garde un journal |
 | `02_manipulation.py` | le contrôle de manipulation : la différence entre A et B a-t-elle été perçue ? |
 | `03_test_ab.py` | le test A/B : Welch pour un nombre, chi² pour un oui / non, avec taille d'effet et puissance |
 | `04_prix.py` | les courbes de Van Westendorp (zone acceptable) et la table de Gabor-Granger (marge) |

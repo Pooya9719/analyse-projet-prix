@@ -1,4 +1,4 @@
-session_id,ts,condition,filtre_m1,attention,manip,vw_trop_bon_marche,vw_bon_marche,vw_cher,vw_trop_cher,achat_15,achat_30,achat_45,achat_60,achat_75,att_1,att_2,att_3,val_1,val_2,val_3,int_1,int_2,int_3,frequence,age,genre
+session_id,ts,condition,filtre,attention,manip,vw_trop_bon_marche,vw_bon_marche,vw_cher,vw_trop_cher,achat_15,achat_30,achat_45,achat_60,achat_75,att_1,att_2,att_3,val_1,val_2,val_3,int_1,int_2,int_3,frequence,age,genre
 s001,2026-10-12T09:00:00+02:00,B,non,ok,5,25,42,59,71,Oui,Oui,Oui,Non,Non,4,3,5,3,3,4,2,2,1,1_mois,43,H
 s002,2026-10-12T09:57:00+02:00,A,non,ok,7,27,36,56,75,Oui,Oui,Oui,Oui,Non,4,4,3,6,6,7,5,6,4,1_semaine_plus,49,H
 s003,2026-10-12T10:54:00+02:00,A,non,ok,6,18,40,62,78,Oui,Oui,Oui,Oui,Oui,5,4,2,5,6,6,6,6,6,2_3_mois,44,H

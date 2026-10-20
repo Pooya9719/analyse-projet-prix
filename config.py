@@ -16,7 +16,7 @@ IDENTIFIANT = "session_id"            # la colonne qui identifie un répondant (
 # ---- les filtres de nettoyage ----------------------------------------------------
 # chaque filtre : (colonne, valeur à EXCLURE, raison écrite dans le journal)
 FILTRES = [
-    ("filtre_m1", "oui", "membre du M1 : connaît l'étude"),
+    ("filtre", "oui", "connaît déjà l'étude (exclu par le filtre)"),
     ("attention", "rate", "contrôle d'attention raté"),
 ]
 
@@ -31,7 +31,7 @@ VERSION_ATTENDUE_HAUTE = "A"          # la version qui DEVRAIT obtenir le score 
 
 # ---- la mesure du prix --------------------------------------------------------------
 PRIX_ACTUEL = 45                      # le prix auquel l'offre est vendue aujourd'hui (ou envisagé)
-COUT_VARIABLE = 18                    # ce que coûte une unité vendue (votre TD 2 de Prix)
+COUT_VARIABLE = 18                    # ce que coûte une unité vendue
 UNITE = "€"
 
 # Van Westendorp : les quatre seuils, dans cet ordre (None si vous ne l'avez pas posé)
